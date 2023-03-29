@@ -7,7 +7,6 @@
             <a href="{{ route('tw') }}">Tailwind 2</a> |
             <a href="{{ route('bs4') }}">Bootstrap 4</a> |
             <a href="{{ route('bs5') }}">Bootstrap 5</a>
-
         </div>
     </div>
     <div style="width:25%; display:inline-block; text-align:center;margin-top:10px;margin-bottom:10px;">

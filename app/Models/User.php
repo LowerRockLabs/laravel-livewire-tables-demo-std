@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'sort',
+        'success_rate',
     ];
 
     /**
@@ -44,11 +45,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'active' => 'boolean',
         'sort' => 'integer',
+        'success_rate' => 'integer',
+
     ];
 
     public function parent(): HasOne
     {
-        return $this->hasOne(User::class, 'id', 'parent_id');
+        return $this->hasOne(self::class, 'parent_id');
     }
 
     public function tags(): BelongsToMany

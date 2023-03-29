@@ -24,9 +24,13 @@ class AddressGroupFactory extends Factory
      */
     public function definition()
     {
+        $randomDate = $this->faker->dateTimeBetween('-1 year', '+1 day');
+
         return [
             'name' => $this->faker->name,
             'city_id' => City::inRandomOrder()->first()->id,
+            'created_at' => $randomDate,
+            'updated_at' => $randomDate
         ];
     }
 }

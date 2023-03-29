@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,7 +41,7 @@
     </div>
 
     <div class="container">
-        <livewire:users-table theme="bootstrap-5" />
+        <livewire:users-table theme="bootstrap-5" filterLayout="slide-down" />
     </div>
 
 
