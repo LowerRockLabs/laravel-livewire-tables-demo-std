@@ -2,36 +2,45 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^7.4|^8.0",
+        "livewire/livewire": "^2.6",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^10.0",
         "laravel/pint": "^1.6",
         "maatwebsite/excel": "^3.1",
-        "rappasoft/laravel-livewire-tables": "^2.0"
+        "rappasoft/laravel-livewire-tables": "dev-develop"
     },
     "require-dev": {
+        "ext-sqlite3": "*",
         "barryvdh/laravel-debugbar": "^3.6",
         "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^6.13|^7.0|^8.0",
+        "phpunit/phpunit": "^9.3",
+        "spatie/laravel-ray": "^1.9",
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Rappasoft\\LaravelLivewireTables\\": "vendor/rappasoft/laravel-livewire-tables/src",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Rappasoft\\LaravelLivewireTables\\Tests\\": "vendor/rappasoft/laravel-livewire-tables/tests"
         }
     },
     "scripts": {
