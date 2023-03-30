@@ -20,9 +20,9 @@ abstract class DuskTestCase extends BaseTestCase
     {
         parent::setUp();
 
-        Browser::$storeScreenshotsAt = __DIR__.'/tests/Dusk/Web/screenshots';
+        Browser::$storeScreenshotsAt = __DIR__.'/Web/screenshots';
 
-        Browser::$storeConsoleLogAt = __DIR__.'/tests/Dusk/Web/console';
+        Browser::$storeConsoleLogAt = __DIR__.'/Web/console';
     }
 
     
