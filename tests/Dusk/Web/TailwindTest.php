@@ -8,39 +8,39 @@ use Rappasoft\LaravelLivewireTables\Tests\Dusk\DuskTestCase;
 class TailwindTest extends DuskTestCase
 {
     /**
-     * All Filters Load
+     * Tailwind Loads
      */
-    public function testFilterMenuOpensAll(): void
+    public function testTailwindLoads(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/tailwind');
 
             $browser->pause(2000);
-            $browser->assertSee('Tailwind');
 
             $browser->assertSee('Tailwind 2 Implementation');
 
             $browser->assertDontSee('Tafasdf');
 
-            $browser->click('.filterbuttonClicker');
-
-            $browser->pause(2000);
-
-            $browser->assertSee('Verified To Filter');
         });
     }
 
-        /**
-     * All Filters Load
+    /**
+     * Tailwind Loads
      */
-    public function testSeeRandom(): void
+    public function testTailwindFilterMenu(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/tailwind');
 
             $browser->pause(2000);
-            $browser->assertSee('Asdfasfa4fadfvacvarfda');
 
+            $browser->assertDontSee('Verified To Filter');
+
+            $browser->click('.filterbuttonClicker');
+
+            $browser->pause(1000);
+
+            $browser->assertSee('Verified To Filter');
         });
     }
 
