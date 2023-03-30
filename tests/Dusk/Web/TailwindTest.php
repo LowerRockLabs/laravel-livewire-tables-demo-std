@@ -29,4 +29,19 @@ class TailwindTest extends DuskTestCase
             $browser->assertSee('Verified To Filter');
         });
     }
+
+        /**
+     * All Filters Load
+     */
+    public function testSeeRandom(): void
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/tailwind');
+
+            $browser->pause(2000);
+            $browser->assertSee('Asdfasfa4fadfvacvarfda');
+
+        });
+    }
+
 }
