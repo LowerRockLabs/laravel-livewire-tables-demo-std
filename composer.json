@@ -9,10 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
-        "livewire/livewire": "^2.6",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^10.0",
         "laravel/pint": "^1.6",
+        "livewire/livewire": "^2.6",
         "maatwebsite/excel": "^3.1",
         "rappasoft/laravel-livewire-tables": "dev-develop"
     },
@@ -70,7 +70,8 @@
             "composer clear-all",
             "composer cache-all"
         ],
-        "pint": "./vendor/bin/pint"
+        "pint": "./vendor/bin/pint",
+        "testtables": "./vendor/bin/phpunit --testsuite 'Laravel Livewire Tables Test Suite'"
     },
     "extra": {
         "laravel": {

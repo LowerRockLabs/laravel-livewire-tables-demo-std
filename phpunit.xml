@@ -11,6 +11,10 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
+        <testsuite name="Laravel Livewire Tables Test Suite">
+            <directory>./vendor/rappasoft/laravel-livewire-tables/tests</directory>
+        </testsuite>
+
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
