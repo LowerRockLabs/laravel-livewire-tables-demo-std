@@ -15,9 +15,15 @@ class TailwindTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/tailwind');
 
+            $browser->pause(2000);
+
+            $browser->assertSee('Tailwind 2 Tables');
+
             $browser->assertDontSee('Tafasdf');
 
-            $browser->pause(5000);
+            $browser->click('.filterbuttonClicker');
+
+            $browser->pause(2000);
 
             $browser->assertSee('Verified To Filter');
         });
