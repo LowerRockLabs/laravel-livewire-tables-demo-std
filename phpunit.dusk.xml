@@ -3,7 +3,6 @@
   <php>
     <env name="APP_KEY" value="1IAkQlj4R/ayOse4lpu36GmRHSDHBdWy4fjXa8jEYy0="/>
     <env name="APP_URL" value="http://127.0.0.1:8000" force="true"/>
-    <env name="DUSK_DRIVER_URL" value="127.0.0.1:4444"/>
     <env name="DEBUGBAR_ENABLED" value="false" force="true"/>
   </php>
   <testsuites>
