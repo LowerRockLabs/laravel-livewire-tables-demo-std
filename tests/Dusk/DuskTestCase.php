@@ -48,11 +48,22 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare(): void
     {
-        if (! static::runningInSail()) {
-            static::startChromeDriver();
-        }
-        static::startChromeDriver();
+       // if (! static::runningInSail()) {
+       //     static::startChromeDriver();
+       // }
     }
+
+
+    /**
+     * Create the RemoteWebDriver instance.
+     */
+    protected function driver(): RemoteWebDriver
+    {
+        return RemoteWebDriver::create(
+            'http://localhost:9515', DesiredCapabilities::chrome()
+        );
+    }
+
 
 
 
