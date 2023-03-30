@@ -5,15 +5,13 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
         <testsuite name="Laravel Livewire Tables Test Suite">
-            <directory suffix="Test.php">./tests</directory>
+            <directory suffix="Test.php">./tests/Standard</directory>
         </testsuite>
+        <testsuite name="Laravel Livewire Tables Dusk Suite">
+            <directory suffix="Test.php">./tests/Dusk</directory>
+        </testsuite>
+
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
