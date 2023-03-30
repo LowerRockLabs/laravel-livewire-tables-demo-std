@@ -25,21 +25,7 @@ abstract class DuskTestCase extends BaseTestCase
         Browser::$storeConsoleLogAt = __DIR__.'/tests/Dusk/Web/console';
     }
 
-    public function getEnvironmentSetUp($app): void
-    {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
-
-        include_once __DIR__.'/../../database/migrations/create_test_tables.php.stub';
-        (new \CreateTestTables())->up();
-
-        config()->set('app.key', Encrypter::generateKey(config('app.cipher')));
-    }
-
+    
 
     /**
      * Prepare for Dusk test execution.
@@ -53,19 +39,28 @@ abstract class DuskTestCase extends BaseTestCase
         }
     }
 
+    /**
+     * Create the RemoteWebDriver instance.
+     */
+    protected function driver(): RemoteWebDriver
+    {
+        $options = (new ChromeOptions)->addArguments(collect([
+            $this->shouldStartMaximized() ? '--start-maximized' : '--window-size=1920,1080',
+        ])->unless($this->hasHeadlessDisabled(), function (Collection $items) {
+            return $items->merge([
+                '--disable-gpu',
+                '--headless=new',
+            ]);
+        })->all());
 
-/**
- * Create the RemoteWebDriver instance.
- */
-protected function driver(): RemoteWebDriver
-{
-    return RemoteWebDriver::create(
-        'http://localhost:4444/', DesiredCapabilities::chrome()
-    );
-}
-
-
-
+        return RemoteWebDriver::create(
+            $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost:9515',
+            DesiredCapabilities::chrome()->setCapability(
+                ChromeOptions::CAPABILITY,
+                $options
+            )
+        );
+    }
 
     /**
      * Determine whether the Dusk command has disabled headless mode.
