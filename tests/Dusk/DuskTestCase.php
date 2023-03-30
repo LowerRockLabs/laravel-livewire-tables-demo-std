@@ -55,15 +55,6 @@ abstract class DuskTestCase extends BaseTestCase
     }
 
 
-    /**
-     * Create the RemoteWebDriver instance.
-     */
-    protected function driver(): RemoteWebDriver
-    {
-        return RemoteWebDriver::create(
-            'http://localhost:4444/wd/hub', DesiredCapabilities::phantomjs()
-        );
-    }
 
 
 
