@@ -70,8 +70,20 @@
             "composer clear-all",
             "composer cache-all"
         ],
+        "initial-build": [
+            "composer update",
+            "composer require rappasoft/laravel-livewire-tables:dev-develop --prefer-source",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate --ansi",
+            "@php artisan migrate:fresh --seed",
+            "@php artisan clear-compiled",
+            "@php artisan cache:clear",
+            "@php artisan route:clear",
+            "@php artisan view:clear",
+            "@php artisan config:clear"
+        ],
         "pint": "./vendor/bin/pint",
-        "testtables": "./vendor/bin/phpunit --testsuite 'Laravel Livewire Tables Test Suite'"
+        "test-tables": "./vendor/bin/phpunit --testsuite 'Laravel Livewire Tables Test Suite'"
     },
     "extra": {
         "laravel": {
