@@ -11,31 +11,71 @@ jobs:
       DB_PASSWORD: root
       MAIL_MAILER: log
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pcov, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+          coverage: pcov
+          tools: phpstan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-P8.2-L10-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-P8.2-L10-composer-
+
+      - name: Add token
+        run: |
+          composer config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer require "laravel/framework:10.*" --no-interaction --no-update
+
+      - name: Update dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer update --${{ matrix.stability }} --no-interaction
+
       - name: Prepare The Environment
         run: cp .env.example .env
-      - name: Create Database
-        run: |
-          sudo systemctl start mysql
-          mysql --user="root" --password="root" -e "CREATE DATABASE \`my-database\` character set UTF8mb4 collate utf8mb4_bin;"
-      - name: Install Composer Dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
       - name: Generate Application Key
         run: php artisan key:generate
+
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
+
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
+
       - name: Run Dusk Tests
         run: php artisan dusk
+
       - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
           path: tests/Browser/screenshots
+
       - name: Upload Console Logs
         if: failure()
         uses: actions/upload-artifact@v2
