@@ -16,8 +16,9 @@ class TailwindTest extends DuskTestCase
             $browser->visit('/tailwind');
 
             $browser->pause(2000);
+            $browser->assertSee('Tailwind');
 
-            $browser->assertSee('Tailwind 2 Tables');
+            $browser->assertSee('Tailwind 2 Implementation');
 
             $browser->assertDontSee('Tafasdf');
 
