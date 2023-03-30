@@ -15,7 +15,7 @@ class TailwindTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/tailwind');
 
-            $browser->assertDontSee('E-mail Verified');
+            $browser->assertDontSee('Tafasdf');
 
             $browser->pause(1000);
 
