@@ -41,6 +41,9 @@ class TailwindTest extends DuskTestCase
             $browser->pause(1000);
 
             $browser->assertSee('Verified To Filter');
+
+            $browser->assertDontSee('SDFa4abadfac43f');
+
         });
     }
 
