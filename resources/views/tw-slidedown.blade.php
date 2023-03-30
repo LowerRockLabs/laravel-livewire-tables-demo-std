@@ -5,7 +5,7 @@
     x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
     x-bind:class="{'dark': darkMode}"
 >
-<head>
+<head>s
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Tailwind 2 Tables</title>
