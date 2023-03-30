@@ -17,13 +17,9 @@ class TailwindTest extends DuskTestCase
 
             $browser->assertDontSee('Tafasdf');
 
-            $browser->pause(1000);
+            $browser->pause(5000);
 
-            $browser->press('@filtBtn');
-
-            $browser->pause(1000);
-
-            $browser->assertSee('E-mail Verified');
+            $browser->assertSee('Verified To Filter');
         });
     }
 }

@@ -241,7 +241,7 @@ class UsersTable extends DataTableComponent
                 ->filter(function (Builder $builder, string $value) {
                     $builder->where('email_verified_at', '>=', $value);
                 }),
-            DateFilter::make('Verified To')
+            DateFilter::make('Verified To Filter')
                 ->filter(function (Builder $builder, string $value) {
                     $builder->where('email_verified_at', '<=', $value);
                 }),
