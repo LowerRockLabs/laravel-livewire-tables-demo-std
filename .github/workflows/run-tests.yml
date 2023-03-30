@@ -48,8 +48,7 @@ jobs:
         run: composer require "laravel/framework:10.*" --no-interaction --no-update
 
       - name: Update dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer update --${{ matrix.stability }} --no-interaction
+        run: composer update --no-interaction
 
       - name: Prepare The Environment
         run: cp .env.example .env
