@@ -2,7 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" bootstrap="vendor/autoload.php" colors="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" cacheDirectory=".phpunit.cache" backupStaticProperties="false">
   <php>
     <env name="APP_KEY" value="1IAkQlj4R/ayOse4lpu36GmRHSDHBdWy4fjXa8jEYy0="/>
-    <env name="APP_URL" value="http://laravel.test" force="true"/>
+    <env name="APP_URL" value="http://127.0.0.1:8000" force="true"/>
     <env name="DUSK_DRIVER_URL" value="127.0.0.1:4444"/>
     <env name="DEBUGBAR_ENABLED" value="false" force="true"/>
   </php>
